@@ -2,7 +2,7 @@
 <html ng-app="app">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Angular Movies</title>
     <link href="content/bootstrap.min.css" rel="stylesheet" />
     <link href="content/bootstrap-theme.css" rel="stylesheet" />
 
@@ -10,14 +10,58 @@
     <script src="scripts/jquery-2.0.3.min.js"></script>
     <script src="scripts/angular.js"></script>
     <script src="scripts/app.js"></script>
-</head>
-<body ng-controller="AppCtrl">
-    <input type="text" ng-model="name" />
-    <div>{{ name }}</div>
 
-    <ul ng-repeat="city in cities">
-        <li>{{city}}</li>
-    </ul>
+    <style>
+      .glyphicon {
+        font-size: 3em;
+      }
+    </style>
+
+</head>
+
+<body ng-controller="AppCtrl">
+    
+    <nav class='navbar navbar-default'>
+      <div class='container'>
+        <div class='navbar-header'>
+          <a class="navbar-brand" href="/index.html">Angular Movies</a>
+        </div>
+      </div>
+    </nav>
+
+    
+    <div class="col-md-6">
+        <table class="table table-hover table-striped">
+            
+            <tfoot>
+              <tr>
+                <td>
+                    <button class="btn btn-info" ng-show="hasPrev()" ng-click="showPrev()">
+                        <span class="glyphicon glyphicon-arrow-left"></span>
+                    </button>
+                </td>
+                <td>
+                    &nbsp;                    
+                </td>
+                <td>
+                    <button class="btn btn-info" ng-show="hasNext()" ng-click="showNext()">
+                        <span class="glyphicon glyphicon-arrow-right"></span>
+                    </button>
+                </td>
+              </tr>              
+            </tfoot>
+
+            <tbody>
+                <tr ng-repeat="movie in movies">
+                    <td><img ng-src="{{movie.posters.thumbnail}}" width="61px;" /></td>
+                    <td>{{movie.title}} ({{movie.year}})</td>
+                    <td><div class="glyphicon glyphicon-heart-empty"></div></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+  
 
 </body>
 </html>
